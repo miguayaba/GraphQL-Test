@@ -33,6 +33,7 @@ const resolvers: IResolvers = {
     }
 } 
 
+
 const schema: GraphQLSchema = makeExecutableSchema({
     typeDefs,
     resolvers
