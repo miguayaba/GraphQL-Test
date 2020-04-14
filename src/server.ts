@@ -25,7 +25,7 @@ const resolvers: IResolvers = {
             return "Hola Mundo";
         },
         holaConNombre(__: void, {nombre}): string {
-            return 'Hola Mundo ${nombre}';
+            return `Hola Mundo ${nombre}`;
         },
         holaAlCurso(): String{
             return "Hola Mundo al curso de GraphQL";
