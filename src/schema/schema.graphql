@@ -1,5 +1,5 @@
  type Query {
-    hola: String!
-    holaConNombre(nombre: String!): String!
-    holaAlCurso: String!
+    nombre: String!
+    saludos(nombre: String!): String!
+    data: String!
 }

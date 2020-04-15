@@ -1,8 +1,9 @@
 import express from 'express';
 import compression from 'compression';
-import graphQLHTTP from 'express-graphql';
 import cors from 'cors';
 import schema from './schema';
+import { ApolloServer } from 'apollo-server-express';
+import { createServer } from 'http';
 
 const app = express();
 
@@ -10,14 +11,16 @@ app.use('*', cors());
 
 app.use(compression());
 
-app.use('/', graphQLHTTP({
+const server = new ApolloServer({
     schema,
-    graphiql: true
+    introspection: true
+});
 
-}));
+server.applyMiddleware({app});
 
 const PORT = 5300;
-app.listen(
+const httpServer = createServer(app);
+httpServer.listen(
     {port : PORT},
     ()=> console.log(`Hola GraphQL http://localhost:${PORT}/graphql`)
 )
